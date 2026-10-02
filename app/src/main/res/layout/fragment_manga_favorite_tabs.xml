@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui_screen_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp">
+
+        <TextView
+            android:id="@+id/collectionTitleTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="Favorite Manga"
+            android:textAppearance="@style/TextAppearance.Miku.ScreenTitle"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/favoriteActionContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/updateFavoriteButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:contentDescription="Update manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="38dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_update"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/importFavoriteButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="Import favorite manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="38dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_import"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/exportFavoriteButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="Export favorite manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="38dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_export"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refreshFavoriteButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="4dp"
+                android:contentDescription="Refresh favorite manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="38dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_refresh"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/historyActionContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/refreshHistoryButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:contentDescription="Refresh history manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="42dp"
+                android:padding="0dp"
+                app:icon="@drawable/ic_refresh"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/clearHistoryButton"
+                style="@style/Widget.Miku.Button.Outlined.Icon"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="Hapus history manga"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:minWidth="42dp"
+                android:padding="0dp"
+                android:visibility="gone"
+                app:icon="@drawable/ic_delete"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mangaFavoriteTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="8dp"
+        android:paddingStart="6dp"
+        android:paddingEnd="6dp"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="?attr/colorPrimary"
+        app:tabIndicatorFullWidth="false"
+        app:tabIndicatorHeight="3dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="?attr/colorPrimaryContainer"
+        app:tabSelectedTextColor="?attr/colorPrimary"
+        app:tabTextColor="?attr/colorOnSurfaceVariant" />
+
+    <FrameLayout
+        android:id="@+id/mangaFavoriteTabContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

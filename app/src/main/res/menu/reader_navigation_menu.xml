@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_prev" android:icon="@drawable/ic_chapter_prev" android:title="Sebelumnya" />
+    <item android:id="@+id/action_back" android:icon="@drawable/mikur" android:title="Kembali" />
+    <item android:id="@+id/action_refresh" android:icon="@drawable/ic_ref" android:title="Refresh" />
+    <item android:id="@+id/action_chapter_list" android:icon="@drawable/ic_reader" android:title="Daftar Chapter" />
+    <item android:id="@+id/action_next" android:icon="@drawable/ic_chapter_next" android:title="Selanjutnya" />
+</menu>

@@ -1,0 +1,671 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="colorPrimary">@color/md_theme_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_onSecondaryContainer</item>
+        <item name="colorSurface">@color/md_theme_surface</item>
+        <item name="android:windowBackground">?attr/colorSurface</item>
+        <item name="android:colorBackground">?attr/colorSurface</item>
+        <item name="colorBackground">?attr/colorSurface</item>
+        <item name="colorOnSurface">@color/md_theme_onSurface</item>
+        <item name="colorSurfaceContainerLowest">@color/md_theme_surfaceContainerLowest</item>
+        <item name="colorSurfaceContainerLow">@color/md_theme_surfaceContainerLow</item>
+        <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
+        <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
+        <item name="colorSurfaceVariant">@color/md_theme_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_outline</item>
+        <item name="colorOutlineVariant">@color/md_theme_outlineVariant</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+        <item name="bottomNavigationStyle">@style/Widget.Miku.BottomNavigationView</item>
+        <item name="chipStyle">@style/Widget.Miku.Chip</item>
+        <item name="materialButtonStyle">@style/Widget.Miku.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.Miku.Card</item>
+        <item name="textInputStyle">@style/Widget.Miku.TextInputLayout</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Miku.MaterialAlertDialog</item>
+        <item name="snackbarStyle">@style/Widget.Miku.Snackbar</item>
+        <item name="android:windowDisablePreview">false</item>
+    </style>
+
+    <style name="AppTheme" parent="Base.AppTheme" />
+
+    <style name="AppTheme.Miku" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB0CE</item>
+        <item name="colorOnPrimary">#5E1137</item>
+        <item name="colorPrimaryContainer">#8B3D5E</item>
+        <item name="colorOnPrimaryContainer">#FFD8E7</item>
+        <item name="colorSecondary">#E2BDD0</item>
+        <item name="colorOnSecondary">#44263A</item>
+        <item name="colorSecondaryContainer">#5D3C50</item>
+        <item name="colorOnSecondaryContainer">#FFD8E7</item>
+        <item name="colorSurface">#180D13</item>
+        <item name="colorSurfaceContainerLowest">#10070C</item>
+        <item name="colorSurfaceContainerLow">#21121A</item>
+        <item name="colorSurfaceContainer">#2A1822</item>
+        <item name="colorSurfaceContainerHigh">#35212C</item>
+        <item name="colorSurfaceContainerHighest">#46303B</item>
+        <item name="colorSurfaceVariant">#563348</item>
+        <item name="colorOnSurface">#FFE9F2</item>
+        <item name="colorOnSurfaceVariant">#E8C2D3</item>
+        <item name="colorOutlineVariant">#6F435A</item>
+        <item name="colorOutline">#B88CA2</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Blue" parent="Base.AppTheme">
+        <item name="colorPrimary">#9ECAFF</item>
+        <item name="colorOnPrimary">#003258</item>
+        <item name="colorPrimaryContainer">#00497D</item>
+        <item name="colorOnPrimaryContainer">#D1E4FF</item>
+        <item name="colorSecondary">#BBC8D7</item>
+        <item name="colorOnSecondary">#253140</item>
+        <item name="colorSecondaryContainer">#3B4858</item>
+        <item name="colorOnSecondaryContainer">#D6E4F7</item>
+        <item name="colorSurface">#07131F</item>
+        <item name="colorSurfaceContainerLowest">#030B13</item>
+        <item name="colorSurfaceContainerLow">#0D1B2A</item>
+        <item name="colorSurfaceContainer">#132333</item>
+        <item name="colorSurfaceContainerHigh">#1B2D40</item>
+        <item name="colorSurfaceContainerHighest">#2A3D52</item>
+        <item name="colorSurfaceVariant">#344B62</item>
+        <item name="colorOnSurface">#EAF4FF</item>
+        <item name="colorOnSurfaceVariant">#C5D8EA</item>
+        <item name="colorOutlineVariant">#465D74</item>
+        <item name="colorOutline">#91A9C0</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Green" parent="Base.AppTheme">
+        <item name="colorPrimary">#9CD67D</item>
+        <item name="colorOnPrimary">#0B3900</item>
+        <item name="colorPrimaryContainer">#205107</item>
+        <item name="colorOnPrimaryContainer">#B8F397</item>
+        <item name="colorSecondary">#BDCBB0</item>
+        <item name="colorOnSecondary">#273421</item>
+        <item name="colorSecondaryContainer">#3D4B36</item>
+        <item name="colorOnSecondaryContainer">#D9E7CB</item>
+        <item name="colorSurface">#0A1609</item>
+        <item name="colorSurfaceContainerLowest">#050D04</item>
+        <item name="colorSurfaceContainerLow">#10200E</item>
+        <item name="colorSurfaceContainer">#172817</item>
+        <item name="colorSurfaceContainerHigh">#20341F</item>
+        <item name="colorSurfaceContainerHighest">#2F442D</item>
+        <item name="colorSurfaceVariant">#3E5438</item>
+        <item name="colorOnSurface">#EEF9E8</item>
+        <item name="colorOnSurfaceVariant">#CBDEC3</item>
+        <item name="colorOutlineVariant">#50684A</item>
+        <item name="colorOutline">#99B18F</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Purple" parent="Base.AppTheme">
+        <item name="colorPrimary">#D0BCFF</item>
+        <item name="colorOnPrimary">#381E72</item>
+        <item name="colorPrimaryContainer">#4F378B</item>
+        <item name="colorOnPrimaryContainer">#EADDFF</item>
+        <item name="colorSecondary">#CCC2DC</item>
+        <item name="colorOnSecondary">#332D41</item>
+        <item name="colorSecondaryContainer">#4A4458</item>
+        <item name="colorOnSecondaryContainer">#E8DEF8</item>
+        <item name="colorSurface">#14101D</item>
+        <item name="colorSurfaceContainerLowest">#0C0814</item>
+        <item name="colorSurfaceContainerLow">#1D1728</item>
+        <item name="colorSurfaceContainer">#251E32</item>
+        <item name="colorSurfaceContainerHigh">#30283E</item>
+        <item name="colorSurfaceContainerHighest">#403750</item>
+        <item name="colorSurfaceVariant">#4C425C</item>
+        <item name="colorOnSurface">#F4EEFF</item>
+        <item name="colorOnSurfaceVariant">#D5C8E5</item>
+        <item name="colorOutlineVariant">#625773</item>
+        <item name="colorOutline">#AA9DBA</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Red" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB4AB</item>
+        <item name="colorOnPrimary">#690005</item>
+        <item name="colorPrimaryContainer">#93000A</item>
+        <item name="colorOnPrimaryContainer">#FFDAD6</item>
+        <item name="colorSecondary">#E7BDB7</item>
+        <item name="colorOnSecondary">#442925</item>
+        <item name="colorSecondaryContainer">#5D3F3B</item>
+        <item name="colorOnSecondaryContainer">#FFDAD6</item>
+        <item name="colorSurface">#1A0D0B</item>
+        <item name="colorSurfaceContainerLowest">#110705</item>
+        <item name="colorSurfaceContainerLow">#241210</item>
+        <item name="colorSurfaceContainer">#2E1815</item>
+        <item name="colorSurfaceContainerHigh">#3A211D</item>
+        <item name="colorSurfaceContainerHighest">#4C302C</item>
+        <item name="colorSurfaceVariant">#5A3B36</item>
+        <item name="colorOnSurface">#FFF0EE</item>
+        <item name="colorOnSurfaceVariant">#E8C7C2</item>
+        <item name="colorOutlineVariant">#704D47</item>
+        <item name="colorOutline">#BA928B</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Amber" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB95C</item>
+        <item name="colorOnPrimary">#4A2800</item>
+        <item name="colorPrimaryContainer">#663D00</item>
+        <item name="colorOnPrimaryContainer">#FFDDB2</item>
+        <item name="colorSecondary">#DFC2A2</item>
+        <item name="colorOnSecondary">#3E2D1B</item>
+        <item name="colorSecondaryContainer">#57432E</item>
+        <item name="colorOnSecondaryContainer">#FEDDBD</item>
+        <item name="colorSurface">#1A1007</item>
+        <item name="colorSurfaceContainerLowest">#100904</item>
+        <item name="colorSurfaceContainerLow">#24170C</item>
+        <item name="colorSurfaceContainer">#2D1D11</item>
+        <item name="colorSurfaceContainerHigh">#392719</item>
+        <item name="colorSurfaceContainerHighest">#4A3525</item>
+        <item name="colorSurfaceVariant">#5A412C</item>
+        <item name="colorOnSurface">#F6EDE5</item>
+        <item name="colorOnSurfaceVariant">#DBC3AD</item>
+        <item name="colorOutlineVariant">#704F34</item>
+        <item name="colorOutline">#AD927A</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Cyan" parent="Base.AppTheme">
+        <item name="colorPrimary">#55D6EC</item>
+        <item name="colorOnPrimary">#00363F</item>
+        <item name="colorPrimaryContainer">#004E5A</item>
+        <item name="colorOnPrimaryContainer">#A4F2FF</item>
+        <item name="colorSecondary">#B4CBD2</item>
+        <item name="colorOnSecondary">#1F3338</item>
+        <item name="colorSecondaryContainer">#354A50</item>
+        <item name="colorOnSecondaryContainer">#CDE7EF</item>
+        <item name="colorSurface">#071417</item>
+        <item name="colorSurfaceContainerLowest">#030B0D</item>
+        <item name="colorSurfaceContainerLow">#0D1D21</item>
+        <item name="colorSurfaceContainer">#13262A</item>
+        <item name="colorSurfaceContainerHigh">#1B3035</item>
+        <item name="colorSurfaceContainerHighest">#2A4147</item>
+        <item name="colorSurfaceVariant">#334D55</item>
+        <item name="colorOnSurface">#E7F6FA</item>
+        <item name="colorOnSurfaceVariant">#BED7DE</item>
+        <item name="colorOutlineVariant">#47656D</item>
+        <item name="colorOutline">#88A7AF</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Teal" parent="Base.AppTheme">
+        <item name="colorPrimary">#62DCCF</item>
+        <item name="colorOnPrimary">#003731</item>
+        <item name="colorPrimaryContainer">#005048</item>
+        <item name="colorOnPrimaryContainer">#79F8E6</item>
+        <item name="colorSecondary">#B4CCC6</item>
+        <item name="colorOnSecondary">#20332F</item>
+        <item name="colorSecondaryContainer">#354B46</item>
+        <item name="colorOnSecondaryContainer">#CCE8E2</item>
+        <item name="colorSurface">#061512</item>
+        <item name="colorSurfaceContainerLowest">#030B09</item>
+        <item name="colorSurfaceContainerLow">#0C1D1A</item>
+        <item name="colorSurfaceContainer">#122724</item>
+        <item name="colorSurfaceContainerHigh">#1A322E</item>
+        <item name="colorSurfaceContainerHighest">#29433E</item>
+        <item name="colorSurfaceVariant">#34524C</item>
+        <item name="colorOnSurface">#E5F7F3</item>
+        <item name="colorOnSurfaceVariant">#BED7D1</item>
+        <item name="colorOutlineVariant">#48675F</item>
+        <item name="colorOutline">#89A9A1</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Indigo" parent="Base.AppTheme">
+        <item name="colorPrimary">#B9C3FF</item>
+        <item name="colorOnPrimary">#172A7A</item>
+        <item name="colorPrimaryContainer">#34479B</item>
+        <item name="colorOnPrimaryContainer">#DEE1FF</item>
+        <item name="colorSecondary">#C5C4DD</item>
+        <item name="colorOnSecondary">#2E3042</item>
+        <item name="colorSecondaryContainer">#454559</item>
+        <item name="colorOnSecondaryContainer">#E1E0F9</item>
+        <item name="colorSurface">#10111A</item>
+        <item name="colorSurfaceContainerLowest">#080911</item>
+        <item name="colorSurfaceContainerLow">#171824</item>
+        <item name="colorSurfaceContainer">#1F2030</item>
+        <item name="colorSurfaceContainerHigh">#2A2B3B</item>
+        <item name="colorSurfaceContainerHighest">#3A3B4D</item>
+        <item name="colorSurfaceVariant">#46475B</item>
+        <item name="colorOnSurface">#F1EEFF</item>
+        <item name="colorOnSurfaceVariant">#C9C6DA</item>
+        <item name="colorOutlineVariant">#5C5E77</item>
+        <item name="colorOutline">#A5A2BC</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Orange" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB691</item>
+        <item name="colorOnPrimary">#5A1E00</item>
+        <item name="colorPrimaryContainer">#7C2E00</item>
+        <item name="colorOnPrimaryContainer">#FFDBCA</item>
+        <item name="colorSecondary">#E7BDB0</item>
+        <item name="colorOnSecondary">#442A20</item>
+        <item name="colorSecondaryContainer">#5D4034</item>
+        <item name="colorOnSecondaryContainer">#FFDBCA</item>
+        <item name="colorSurface">#1A0D08</item>
+        <item name="colorSurfaceContainerLowest">#110704</item>
+        <item name="colorSurfaceContainerLow">#24120C</item>
+        <item name="colorSurfaceContainer">#2F1811</item>
+        <item name="colorSurfaceContainerHigh">#3B2118</item>
+        <item name="colorSurfaceContainerHighest">#4D3026</item>
+        <item name="colorSurfaceVariant">#5B3B31</item>
+        <item name="colorOnSurface">#FFF0EA</item>
+        <item name="colorOnSurfaceVariant">#EAC4B7</item>
+        <item name="colorOutlineVariant">#734D40</item>
+        <item name="colorOutline">#BF9080</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Coral" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB4AB</item>
+        <item name="colorOnPrimary">#690005</item>
+        <item name="colorPrimaryContainer">#93000A</item>
+        <item name="colorOnPrimaryContainer">#FFDAD6</item>
+        <item name="colorSecondary">#E7BDB7</item>
+        <item name="colorOnSecondary">#442925</item>
+        <item name="colorSecondaryContainer">#5D3F3B</item>
+        <item name="colorOnSecondaryContainer">#FFDAD6</item>
+        <item name="colorSurface">#1A0D0B</item>
+        <item name="colorSurfaceContainerLowest">#110705</item>
+        <item name="colorSurfaceContainerLow">#241210</item>
+        <item name="colorSurfaceContainer">#2E1815</item>
+        <item name="colorSurfaceContainerHigh">#3A211D</item>
+        <item name="colorSurfaceContainerHighest">#4C302C</item>
+        <item name="colorSurfaceVariant">#5A3B36</item>
+        <item name="colorOnSurface">#FFF0EE</item>
+        <item name="colorOnSurfaceVariant">#E8C7C2</item>
+        <item name="colorOutlineVariant">#704D47</item>
+        <item name="colorOutline">#BA928B</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Rose" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB1C5</item>
+        <item name="colorOnPrimary">#5E1130</item>
+        <item name="colorPrimaryContainer">#7C2946</item>
+        <item name="colorOnPrimaryContainer">#FFD9E2</item>
+        <item name="colorSecondary">#E5BDCA</item>
+        <item name="colorOnSecondary">#432932</item>
+        <item name="colorSecondaryContainer">#5C3F49</item>
+        <item name="colorOnSecondaryContainer">#FFD9E2</item>
+        <item name="colorSurface">#1A0D12</item>
+        <item name="colorSurfaceContainerLowest">#10070B</item>
+        <item name="colorSurfaceContainerLow">#241218</item>
+        <item name="colorSurfaceContainer">#2E1920</item>
+        <item name="colorSurfaceContainerHigh">#39222A</item>
+        <item name="colorSurfaceContainerHighest">#4B3139</item>
+        <item name="colorSurfaceVariant">#593C45</item>
+        <item name="colorOnSurface">#FFF0F4</item>
+        <item name="colorOnSurfaceVariant">#EAC3CE</item>
+        <item name="colorOutlineVariant">#704D58</item>
+        <item name="colorOutline">#BA929E</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Magenta" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFABF3</item>
+        <item name="colorOnPrimary">#5A005A</item>
+        <item name="colorPrimaryContainer">#810081</item>
+        <item name="colorOnPrimaryContainer">#FFD7F4</item>
+        <item name="colorSecondary">#DDBDD4</item>
+        <item name="colorOnSecondary">#3D2B38</item>
+        <item name="colorSecondaryContainer">#554151</item>
+        <item name="colorOnSecondaryContainer">#FAD8EE</item>
+        <item name="colorSurface">#190D16</item>
+        <item name="colorSurfaceContainerLowest">#10070E</item>
+        <item name="colorSurfaceContainerLow">#23121E</item>
+        <item name="colorSurfaceContainer">#2C1928</item>
+        <item name="colorSurfaceContainerHigh">#372234</item>
+        <item name="colorSurfaceContainerHighest">#493145</item>
+        <item name="colorSurfaceVariant">#553D51</item>
+        <item name="colorOnSurface">#F8EEF5</item>
+        <item name="colorOnSurfaceVariant">#E2C4D7</item>
+        <item name="colorOutlineVariant">#6A5062</item>
+        <item name="colorOutline">#B08FA4</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Violet" parent="Base.AppTheme">
+        <item name="colorPrimary">#D0BCFF</item>
+        <item name="colorOnPrimary">#381E72</item>
+        <item name="colorPrimaryContainer">#5637A9</item>
+        <item name="colorOnPrimaryContainer">#EADDFF</item>
+        <item name="colorSecondary">#D2BFE7</item>
+        <item name="colorOnSecondary">#372B45</item>
+        <item name="colorSecondaryContainer">#4E4160</item>
+        <item name="colorOnSecondaryContainer">#ECDCFF</item>
+        <item name="colorSurface">#14101D</item>
+        <item name="colorSurfaceContainerLowest">#0C0814</item>
+        <item name="colorSurfaceContainerLow">#1D1728</item>
+        <item name="colorSurfaceContainer">#251E32</item>
+        <item name="colorSurfaceContainerHigh">#30283E</item>
+        <item name="colorSurfaceContainerHighest">#403750</item>
+        <item name="colorSurfaceVariant">#4C425C</item>
+        <item name="colorOnSurface">#F4EEFF</item>
+        <item name="colorOnSurfaceVariant">#D8C4E8</item>
+        <item name="colorOutlineVariant">#635575</item>
+        <item name="colorOutline">#AC9CBD</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Grape" parent="Base.AppTheme">
+        <item name="colorPrimary">#E4B5FF</item>
+        <item name="colorOnPrimary">#4A125C</item>
+        <item name="colorPrimaryContainer">#613075</item>
+        <item name="colorOnPrimaryContainer">#F5D8FF</item>
+        <item name="colorSecondary">#D7BED8</item>
+        <item name="colorOnSecondary">#3B2B3E</item>
+        <item name="colorSecondaryContainer">#534155</item>
+        <item name="colorOnSecondaryContainer">#F3DBF6</item>
+        <item name="colorSurface">#170E19</item>
+        <item name="colorSurfaceContainerLowest">#0E0710</item>
+        <item name="colorSurfaceContainerLow">#211222</item>
+        <item name="colorSurfaceContainer">#2A192C</item>
+        <item name="colorSurfaceContainerHigh">#352337</item>
+        <item name="colorSurfaceContainerHighest">#463148</item>
+        <item name="colorSurfaceVariant">#533C55</item>
+        <item name="colorOnSurface">#F8EEFA</item>
+        <item name="colorOnSurfaceVariant">#DFC3E1</item>
+        <item name="colorOutlineVariant">#684D6B</item>
+        <item name="colorOutline">#B091B2</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Lime" parent="Base.AppTheme">
+        <item name="colorPrimary">#C2D94F</item>
+        <item name="colorOnPrimary">#2C3400</item>
+        <item name="colorPrimaryContainer">#404C00</item>
+        <item name="colorOnPrimaryContainer">#D9EE77</item>
+        <item name="colorSecondary">#C6CAA8</item>
+        <item name="colorOnSecondary">#30331C</item>
+        <item name="colorSecondaryContainer">#46492F</item>
+        <item name="colorOnSecondaryContainer">#E2E6C6</item>
+        <item name="colorSurface">#121408</item>
+        <item name="colorSurfaceContainerLowest">#0A0C03</item>
+        <item name="colorSurfaceContainerLow">#1A1C0D</item>
+        <item name="colorSurfaceContainer">#222512</item>
+        <item name="colorSurfaceContainerHigh">#2C301A</item>
+        <item name="colorSurfaceContainerHighest">#3C4028</item>
+        <item name="colorSurfaceVariant">#484D33</item>
+        <item name="colorOnSurface">#F3F5DF</item>
+        <item name="colorOnSurfaceVariant">#CED1B2</item>
+        <item name="colorOutlineVariant">#5E6348</item>
+        <item name="colorOutline">#A6AB8D</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Emerald" parent="Base.AppTheme">
+        <item name="colorPrimary">#72D99B</item>
+        <item name="colorOnPrimary">#00391A</item>
+        <item name="colorPrimaryContainer">#005229</item>
+        <item name="colorOnPrimaryContainer">#8EF6B5</item>
+        <item name="colorSecondary">#B8CCBA</item>
+        <item name="colorOnSecondary">#223526</item>
+        <item name="colorSecondaryContainer">#384B3B</item>
+        <item name="colorOnSecondaryContainer">#D1E8D5</item>
+        <item name="colorSurface">#08150A</item>
+        <item name="colorSurfaceContainerLowest">#040D05</item>
+        <item name="colorSurfaceContainerLow">#0E1E10</item>
+        <item name="colorSurfaceContainer">#162817</item>
+        <item name="colorSurfaceContainerHigh">#1F321F</item>
+        <item name="colorSurfaceContainerHighest">#2E432E</item>
+        <item name="colorSurfaceVariant">#3B523A</item>
+        <item name="colorOnSurface">#E8F6E7</item>
+        <item name="colorOnSurfaceVariant">#C2D7C2</item>
+        <item name="colorOutlineVariant">#4D674E</item>
+        <item name="colorOutline">#92AB92</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Mint" parent="Base.AppTheme">
+        <item name="colorPrimary">#72DBB1</item>
+        <item name="colorOnPrimary">#003827</item>
+        <item name="colorPrimaryContainer">#00513A</item>
+        <item name="colorOnPrimaryContainer">#8CF8CF</item>
+        <item name="colorSecondary">#B7CCC1</item>
+        <item name="colorOnSecondary">#21352C</item>
+        <item name="colorSecondaryContainer">#374B42</item>
+        <item name="colorOnSecondaryContainer">#D0E8DD</item>
+        <item name="colorSurface">#07150F</item>
+        <item name="colorSurfaceContainerLowest">#030D08</item>
+        <item name="colorSurfaceContainerLow">#0D1E15</item>
+        <item name="colorSurfaceContainer">#14281D</item>
+        <item name="colorSurfaceContainerHigh">#1D3227</item>
+        <item name="colorSurfaceContainerHighest">#2C4335</item>
+        <item name="colorSurfaceVariant">#385342</item>
+        <item name="colorOnSurface">#E7F7ED</item>
+        <item name="colorOnSurfaceVariant">#C1D7CB</item>
+        <item name="colorOutlineVariant">#4B6758</item>
+        <item name="colorOutline">#90AC9B</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Sky" parent="Base.AppTheme">
+        <item name="colorPrimary">#8DCDFF</item>
+        <item name="colorOnPrimary">#00344D</item>
+        <item name="colorPrimaryContainer">#004C6D</item>
+        <item name="colorOnPrimaryContainer">#C8E6FF</item>
+        <item name="colorSecondary">#B9C8D5</item>
+        <item name="colorOnSecondary">#23323D</item>
+        <item name="colorSecondaryContainer">#394955</item>
+        <item name="colorOnSecondaryContainer">#D4E4F3</item>
+        <item name="colorSurface">#08131A</item>
+        <item name="colorSurfaceContainerLowest">#040A0E</item>
+        <item name="colorSurfaceContainerLow">#0F1B24</item>
+        <item name="colorSurfaceContainer">#15242F</item>
+        <item name="colorSurfaceContainerHigh">#1E2E3B</item>
+        <item name="colorSurfaceContainerHighest">#2D3F4E</item>
+        <item name="colorSurfaceVariant">#394F60</item>
+        <item name="colorOnSurface">#E9F4FF</item>
+        <item name="colorOnSurfaceVariant">#C2D3E0</item>
+        <item name="colorOutlineVariant">#4C6273</item>
+        <item name="colorOutline">#95AABC</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Navy" parent="Base.AppTheme">
+        <item name="colorPrimary">#A4C9FF</item>
+        <item name="colorOnPrimary">#00315F</item>
+        <item name="colorPrimaryContainer">#0D4779</item>
+        <item name="colorOnPrimaryContainer">#D3E4FF</item>
+        <item name="colorSecondary">#BBC7D8</item>
+        <item name="colorOnSecondary">#253140</item>
+        <item name="colorSecondaryContainer">#3B4858</item>
+        <item name="colorOnSecondaryContainer">#D7E3F7</item>
+        <item name="colorSurface">#07121F</item>
+        <item name="colorSurfaceContainerLowest">#030A13</item>
+        <item name="colorSurfaceContainerLow">#0E1A2A</item>
+        <item name="colorSurfaceContainer">#142232</item>
+        <item name="colorSurfaceContainerHigh">#1C2C40</item>
+        <item name="colorSurfaceContainerHighest">#2B3C52</item>
+        <item name="colorSurfaceVariant">#344B62</item>
+        <item name="colorOnSurface">#EBF2FF</item>
+        <item name="colorOnSurfaceVariant">#C5D8EA</item>
+        <item name="colorOutlineVariant">#465D74</item>
+        <item name="colorOutline">#91A9C0</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Brown" parent="Base.AppTheme">
+        <item name="colorPrimary">#E6C26C</item>
+        <item name="colorOnPrimary">#402D00</item>
+        <item name="colorPrimaryContainer">#5B4200</item>
+        <item name="colorOnPrimaryContainer">#FFDFA0</item>
+        <item name="colorSecondary">#D3C4AC</item>
+        <item name="colorOnSecondary">#382E1F</item>
+        <item name="colorSecondaryContainer">#4F4533</item>
+        <item name="colorOnSecondaryContainer">#EEE1CF</item>
+        <item name="colorSurface">#17100A</item>
+        <item name="colorSurfaceContainerLowest">#0D0904</item>
+        <item name="colorSurfaceContainerLow">#20170D</item>
+        <item name="colorSurfaceContainer">#2A1F12</item>
+        <item name="colorSurfaceContainerHigh">#352918</item>
+        <item name="colorSurfaceContainerHighest">#463824</item>
+        <item name="colorSurfaceVariant">#55452F</item>
+        <item name="colorOnSurface">#F7EFE5</item>
+        <item name="colorOnSurfaceVariant">#DAC8B4</item>
+        <item name="colorOutlineVariant">#68533A</item>
+        <item name="colorOutline">#AD977D</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Graphite" parent="Base.AppTheme">
+        <item name="colorPrimary">#C7C7C7</item>
+        <item name="colorOnPrimary">#303030</item>
+        <item name="colorPrimaryContainer">#454545</item>
+        <item name="colorOnPrimaryContainer">#E3E3E3</item>
+        <item name="colorSecondary">#C8C5CA</item>
+        <item name="colorOnSecondary">#303033</item>
+        <item name="colorSecondaryContainer">#47464A</item>
+        <item name="colorOnSecondaryContainer">#E4E2E6</item>
+        <item name="colorSurface">#121212</item>
+        <item name="colorSurfaceContainerLowest">#0A0A0A</item>
+        <item name="colorSurfaceContainerLow">#1B1B1B</item>
+        <item name="colorSurfaceContainer">#232323</item>
+        <item name="colorSurfaceContainerHigh">#2E2E2E</item>
+        <item name="colorSurfaceContainerHighest">#3E3E3E</item>
+        <item name="colorSurfaceVariant">#49454F</item>
+        <item name="colorOnSurface">#F4EFF4</item>
+        <item name="colorOnSurfaceVariant">#CAC4CF</item>
+        <item name="colorOutlineVariant">#605D66</item>
+        <item name="colorOutline">#AAA5AF</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Gold" parent="Base.AppTheme">
+        <item name="colorPrimary">#DAC65C</item>
+        <item name="colorOnPrimary">#3B3000</item>
+        <item name="colorPrimaryContainer">#554600</item>
+        <item name="colorOnPrimaryContainer">#FFE16F</item>
+        <item name="colorSecondary">#D1C58D</item>
+        <item name="colorOnSecondary">#373016</item>
+        <item name="colorSecondaryContainer">#4E462A</item>
+        <item name="colorOnSecondaryContainer">#EDE3BD</item>
+        <item name="colorSurface">#151205</item>
+        <item name="colorSurfaceContainerLowest">#0C0A02</item>
+        <item name="colorSurfaceContainerLow">#1E1A09</item>
+        <item name="colorSurfaceContainer">#28230D</item>
+        <item name="colorSurfaceContainerHigh">#332C13</item>
+        <item name="colorSurfaceContainerHighest">#443C20</item>
+        <item name="colorSurfaceVariant">#52482A</item>
+        <item name="colorOnSurface">#F8F0D0</item>
+        <item name="colorOnSurfaceVariant">#D8CFA1</item>
+        <item name="colorOutlineVariant">#665A36</item>
+        <item name="colorOutline">#AFA26C</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Sakura" parent="Base.AppTheme">
+        <item name="colorPrimary">#FFB0CE</item>
+        <item name="colorOnPrimary">#5E1137</item>
+        <item name="colorPrimaryContainer">#8B3D5E</item>
+        <item name="colorOnPrimaryContainer">#FFD8E7</item>
+        <item name="colorSecondary">#E2BDD0</item>
+        <item name="colorOnSecondary">#44263A</item>
+        <item name="colorSecondaryContainer">#5D3C50</item>
+        <item name="colorOnSecondaryContainer">#FFD8E7</item>
+        <item name="colorSurface">#180D13</item>
+        <item name="colorSurfaceContainerLowest">#10070C</item>
+        <item name="colorSurfaceContainerLow">#21121A</item>
+        <item name="colorSurfaceContainer">#2A1822</item>
+        <item name="colorSurfaceContainerHigh">#35212C</item>
+        <item name="colorSurfaceContainerHighest">#46303B</item>
+        <item name="colorSurfaceVariant">#563348</item>
+        <item name="colorOnSurface">#FFE9F2</item>
+        <item name="colorOnSurfaceVariant">#E8C2D3</item>
+        <item name="colorOutlineVariant">#6F435A</item>
+        <item name="colorOutline">#B88CA2</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Aqua" parent="Base.AppTheme">
+        <item name="colorPrimary">#69DCC0</item>
+        <item name="colorOnPrimary">#00382F</item>
+        <item name="colorPrimaryContainer">#005143</item>
+        <item name="colorOnPrimaryContainer">#83F8DA</item>
+        <item name="colorSecondary">#B5CBC2</item>
+        <item name="colorOnSecondary">#20352D</item>
+        <item name="colorSecondaryContainer">#364B42</item>
+        <item name="colorOnSecondaryContainer">#CDE8DD</item>
+        <item name="colorSurface">#061510</item>
+        <item name="colorSurfaceContainerLowest">#030D08</item>
+        <item name="colorSurfaceContainerLow">#0D1E16</item>
+        <item name="colorSurfaceContainer">#13281E</item>
+        <item name="colorSurfaceContainerHigh">#1B3227</item>
+        <item name="colorSurfaceContainerHighest">#2A4336</item>
+        <item name="colorSurfaceVariant">#355345</item>
+        <item name="colorOnSurface">#E6F7EE</item>
+        <item name="colorOnSurfaceVariant">#BFD7CC</item>
+        <item name="colorOutlineVariant">#48675A</item>
+        <item name="colorOutline">#89AA9C</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="colorAccent">?attr/colorPrimary</item>
+        <item name="android:colorAccent">?attr/colorPrimary</item>
+    </style>
+</resources>

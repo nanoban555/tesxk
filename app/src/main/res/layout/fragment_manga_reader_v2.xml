@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/miku_app_background"
+    android:fitsSystemWindows="false">
+
+    <miku.moe.app.MangaWebtoonFrame
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <miku.moe.app.MangaWebtoonRecyclerView
+        android:id="@+id/readerRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="92dp"
+        android:scrollbars="none" />
+
+    </miku.moe.app.MangaWebtoonFrame>
+
+    <LinearLayout
+        android:id="@+id/readerTopBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="top"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/reader_v2_panel_background"
+        android:elevation="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="14dp">
+
+        <ImageButton
+            android:id="@+id/readerBackButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Kembali"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/readerMangaTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Manga"
+                android:textColor="#D6D8E0"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/readerChapterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Chapter"
+                android:textColor="#B59CFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/readerFloatingControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="72dp"
+        android:elevation="18dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/readerPrevButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/reader_v2_round_button_background"
+            android:contentDescription="Chapter sebelumnya"
+            android:padding="17dp"
+            android:src="@drawable/ic_chapter_prev"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/readerRefreshButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/reader_v2_round_button_background"
+            android:contentDescription="Refresh"
+            android:padding="17dp"
+            android:src="@drawable/ic_refresh"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/readerChapterListButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/reader_v2_round_button_background"
+            android:contentDescription="Daftar chapter"
+            android:padding="17dp"
+            android:src="@drawable/ic_menu"
+            android:tint="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/readerNextButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="14dp"
+            android:background="@drawable/reader_v2_round_button_background"
+            android:contentDescription="Chapter berikutnya"
+            android:padding="17dp"
+            android:src="@drawable/ic_chapter_next"
+            android:tint="@android:color/white" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/readerPageIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="14dp"
+        android:includeFontPadding="false"
+        android:paddingStart="6dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="2dp"
+        android:text="0 / 0"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="?attr/colorPrimary"
+        android:visibility="gone" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

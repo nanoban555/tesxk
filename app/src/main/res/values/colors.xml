@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="md_theme_primary">#6B5E4A</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#F3E2C6</color>
+    <color name="md_theme_onPrimaryContainer">#241A0B</color>
+    <color name="md_theme_secondary">#655F52</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#ECE3D3</color>
+    <color name="md_theme_onSecondaryContainer">#211B12</color>
+    <color name="md_theme_surface">#FFF8F0</color>
+    <color name="md_theme_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_surfaceContainerLow">#FBF1E6</color>
+    <color name="md_theme_surfaceContainer">#F4EDE3</color>
+    <color name="md_theme_surfaceContainerHighest">#E8E1D7</color>
+    <color name="md_theme_surfaceVariant">#EDE1D2</color>
+    <color name="md_theme_surfaceContainerHigh">#EEE7DD</color>
+    <color name="md_theme_onSurface">#1F1B16</color>
+    <color name="md_theme_onSurfaceVariant">#51483D</color>
+    <color name="md_theme_outlineVariant">#D4C4B5</color>
+    <color name="md_theme_outline">#837568</color>
+    <color name="md_theme_scrim">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+    <color name="miku_app_background">#080B12</color>
+    <color name="miku_app_background_elevated">#0C111B</color>
+    <color name="miku_glass_surface">#D9141A27</color>
+    <color name="miku_detail_card_background">#FF0D111C</color>
+    <color name="miku_glass_surface_strong">#F21A2232</color>
+    <color name="miku_glass_surface_soft">#A6121823</color>
+    <color name="miku_glass_stroke">#24FFFFFF</color>
+    <color name="miku_glass_stroke_strong">#3DFFFFFF</color>
+    <color name="miku_field_surface">#B5161E2C</color>
+    <color name="miku_nav_surface">#F20D1421</color>
+    <color name="miku_nav_divider">#18FFFFFF</color>
+    <color name="miku_card_scrim">#B8000000</color>
+    <color name="miku_text_soft">#B8FFFFFF</color>
+    <color name="miku_text_muted">#82FFFFFF</color>
+    <color name="miku_player_surface">#E80A0E16</color>
+</resources>

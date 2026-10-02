@@ -1,0 +1,1549 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pengaturan"
+            android:textAppearance="@style/TextAppearance.Miku.ScreenTitle"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/infoTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="?attr/colorPrimary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabRippleColor="?attr/colorPrimaryContainer"
+            app:tabSelectedTextColor="?attr/colorPrimary"
+            app:tabTextColor="?attr/colorOnSurfaceVariant" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/statsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Statistik Aplikasi"
+                    android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/statsTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingExtra="6dp"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/settingsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/uiSettingsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_settings"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/uiSettingsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="Pengaturan UI"
+                        android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/uiSettingsArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_settings_arrow_right"
+                        app:tint="?attr/colorOnSurfaceVariant"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/uiSettingsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="?attr/colorOutlineVariant"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Warna Tema Aplikasi"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Pilih warna tema utama aplikasi. Perubahan diterapkan langsung setelah dipilih."
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <RadioGroup
+                            android:id="@+id/uiThemeRadioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/uiThemeDefaultRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Default"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                            <RadioButton
+                                android:id="@+id/uiThemeMikuRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Miku Pink"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                            <RadioButton
+                                android:id="@+id/uiThemeBlueRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Ocean Blue"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                            <RadioButton
+                                android:id="@+id/uiThemeGreenRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Green Apple"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                            <RadioButton
+                                android:id="@+id/uiThemePurpleRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lavender"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                            <RadioButton
+                                android:id="@+id/uiThemeRedRadio"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Strawberry"
+                                android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/animeSettingsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_play"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/animeSettingsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="Pengaturan Anime"
+                        android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/animeSettingsArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_settings_arrow_right"
+                        app:tint="?attr/colorOnSurfaceVariant"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/animeSettingsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Style Home Anime"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Pilih tampilan Home anime bawaan atau Home Anime v1 dengan struktur yang sama seperti Home Manga v1."
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <RadioGroup
+                        android:id="@+id/animeHomeStyleRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/animeHomeStyleDefaultRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Home default"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                        <RadioButton
+                            android:id="@+id/animeHomeStyleV1Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Home Anime v1"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/animeHomeSourceButton"
+                        style="@style/Widget.Miku.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Source Home Anime v1"
+                        app:icon="@drawable/ic_swap_horiz"
+                        app:iconGravity="textStart" />
+
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/hideAnimeLatestEpisodeLabelSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Hide Label Episode Terbaru"
+                        android:textColor="?attr/colorOnSurface"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Source Anime" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Pilih sumber data anime yang ditampilkan di Home, pencarian, favorite, dan history anime." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <LinearLayout android:id="@+id/animeSourceCheckGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <CheckBox android:id="@+id/animeSourceDefaultCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Anime X Nonton" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/animeSourceAnimekuCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Animeku" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/animeSourceAnimeloverzCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Animeloverz" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/animeSourceDramoraCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Dramora" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/animeSourceAnichinCheck" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Anichin" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Resolusi Default Player" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Dipakai otomatis saat episode anime dibuka." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <RadioGroup android:id="@+id/qualityRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/qualitySdRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SD = 360p" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/qualityHdRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="HD = 720p" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/qualityFhdRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="FHD = 1080p" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Player Anime" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Pilih internal player atau external player untuk nonton anime." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <RadioGroup android:id="@+id/externalPlayerRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/playerInternalRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Internal Player" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/playerChooserRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pilih aplikasi setiap nonton" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/playerVlcRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="VLC" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/playerMpvRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="MPV / libmpv / mpvkt" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14dp" android:text="Skala Video Internal Player" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Normal: video utuh. Fit: diperbesar sedikit, subtitle bawah tetap aman. Stretch: ditarik memenuhi layar." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <RadioGroup android:id="@+id/videoScaleRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/videoScaleNormalRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Normal" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/videoScaleFitRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fit" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/videoScaleStretchRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Stretch" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Auto Landscape Video" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Saat video anime dibuka, layar otomatis landscape." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/autoLandscapeSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mangaSettingsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_book"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/mangaSettingsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="Pengaturan Manga"
+                        android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/mangaSettingsArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_settings_arrow_right"
+                        app:tint="?attr/colorOnSurfaceVariant"
+                        android:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/mangaSettingsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Baca Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Aktifkan mode baca manga, data anime seperti favorite dan history akan dipisahkan dan tidak akan ditampilkan di aplikasi." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaModeSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Style Home"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Pilih tampilan beranda manga. Style Home v1 menampilkan satu source aktif dengan hero, lanjut membaca, manga populer, dan manga terbaru."
+                        android:textAppearance="?attr/textAppearanceBodySmall"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <RadioGroup
+                        android:id="@+id/mangaHomeStyleRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/mangaHomeStyleDefaultRadio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Style Home"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                        <RadioButton
+                            android:id="@+id/mangaHomeStyleV1Radio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Style Home v1"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Auto Save Image Favorite &amp; History" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Simpan sampul favorite dan history supaya tidak perlu download ulang saat dibuka lagi." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaAutoSaveImageSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Hide Label Chapter terbaru" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Sembunyikan label chapter terbaru pada kartu manga." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/hideMangaLatestChapterLabelSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Hide Label Manga, Manhua, Manhwa Dll" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Sembunyikan label tipe seperti Manga, Manhua, Manhwa, Webtoon, dan label sejenis." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/hideMangaTypeLabelSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Hide All Label" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Sembunyikan label chapter terbaru dan hentikan pengambilan data chapter terbaru." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/hideAllMangaLabelsSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ubah UI Data Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Tampilkan judul dan chapter di dalam layout gambar manga." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/compactMangaDataUiSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Gunakan font bold untuk judul manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Semua judul manga di Home, daftar manga, detail, history, dan rekomendasi memakai tampilan bold." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/boldMangaTitleSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cache Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Kelola cache sampul manga yang tersimpan di perangkat." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <TextView android:id="@+id/mangaCacheSizeText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Total Cache: menghitung..." android:textAppearance="?attr/textAppearanceBodyMedium" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <com.google.android.material.button.MaterialButton android:id="@+id/clearMangaCacheButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="Clear Cache" app:icon="@drawable/ic_refresh" app:iconGravity="textStart" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sumber Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Centang source yang diaktifkan. Untuk Style Home v1, pilih satu source utama melalui tombol di bawah." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mangaHomeSourceButton"
+                        style="@style/Widget.Miku.Button.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Source Home v1: VoraToon"
+                        android:textAllCaps="false" />
+                    <LinearLayout android:id="@+id/mangaSourceCheckGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <CheckBox android:id="@+id/mangaSourceKomikcastRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="VoraToon" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceShinigamiRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Shinigami" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceDoujindesuRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DoujinDesu" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceWestmangaRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Westmanga" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceBacakomikRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="BacaKomik" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKomikindoRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Komikindo" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceIkiruRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ikiru" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKomikuRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Komiku Asia" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceMangasusuRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mangasusu" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKomikuOrgRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Komiku Org" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceCosmicScansRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CosmicScans" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKiryuuOfficialRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Kiryuu Official" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceNatsuRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Natsu" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceAinzscanssRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ainzscanss" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceApkomikRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Apkomik" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceComicasoRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Comicaso" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKumoPoiRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="KumoPoi" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceMgkomikRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mgkomik" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceCrotpediaRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crotpedia" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceNgomikRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ngomik" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKomikTapRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="KomikTap" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceManhwaIndoRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Manhwa Indo" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceSoulScansRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Soul Scans" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceKuromangaRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Kuromanga" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceIsekaiKomikRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Isekai Komik" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceLuvyaaRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Luvyaa" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                        <CheckBox android:id="@+id/mangaSourceSekteDoujinRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SekteDoujin" android:textColor="?attr/colorOnSurface" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Grid tampilan manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <RadioGroup android:id="@+id/mangaGridRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
+                        <RadioButton android:id="@+id/mangaGrid2Radio" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="2 Kolom" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaGrid3Radio" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="3 Kolom" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Layout Chapter" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <RadioGroup android:id="@+id/chapterLayoutRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/chapterDefaultRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Default" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/chapterGrid2Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Grid 2" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ubah UI/UX Detail Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <RadioGroup android:id="@+id/mangaDetailUiRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/mangaDetailUiDefaultRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Default" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaDetailUiV1Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Detail v1" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaDetailUiV2Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Detail v2" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="UI Reader Manga" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <RadioGroup android:id="@+id/mangaReaderUiRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/mangaReaderUiDefaultRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Default" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaReaderUiV1Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="UI Baca manga v1" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaReaderUiV2Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="UI Baca manga v2" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Zoom reader" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Aktifkan zoom dan pan pada halaman reader manga." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderZoomSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="PhotoView zoom" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Gunakan mode zoom PhotoView pada gambar reader." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderPhotoViewZoomSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Double tap zoom" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Ketuk dua kali gambar untuk zoom in atau reset zoom." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderDoubleTapZoomSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crop border" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Potong pinggiran putih atau hitam pada halaman manga." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderCropBorderSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Image scale type" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <RadioGroup android:id="@+id/mangaReaderImageScaleRadioGroup" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="vertical">
+                        <RadioButton android:id="@+id/mangaReaderScaleFitWidthRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fit width" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaReaderScaleFitScreenRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fit screen" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        <RadioButton android:id="@+id/mangaReaderScaleOriginalRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Original size" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Page transition" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Animasi fade halus saat halaman manga selesai dimuat." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderPageTransitionSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Preload Gambar Chapter berikut nya" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Saat mendekati 2 gambar terakhir, gambar chapter berikutnya langsung ditampilkan di bawah chapter saat ini. Saat berada di gambar awal, chapter sebelumnya dimuat di atas tanpa menghapus gambar yang sedang dibaca." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderInlinePreloadSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Preload chapter berikutnya secara otomatis" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Saat mendekati gambar terakhir, snackbar muncul sesuai durasi custom lalu otomatis lanjut ke chapter berikutnya." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderNextChapterAutoSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Preload Chapter berikut nya manual" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Saat mendekati gambar terakhir, snackbar menampilkan pilihan lanjut manual ke chapter berikutnya." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                        <com.google.android.material.switchmaterial.SwitchMaterial android:id="@+id/mangaReaderNextChapterManualSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        app:thumbTint="@color/miku_switch_thumb_tint"
+        app:trackTint="@color/miku_switch_track_tint" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Custom preload ke chapter berikutnya" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Isi jumlah gambar terakhir untuk memunculkan snackbar chapter berikutnya. Kosong atau tidak valid akan memakai default 2 gambar terakhir." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <EditText
+                        android:id="@+id/mangaReaderNextChapterThresholdInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/ui_search_background"
+                        android:hint="2"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textColorHint="?attr/colorOnSurfaceVariant" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Custom durasi preload chapter berikutnya" android:textAppearance="?attr/textAppearanceTitleMedium" android:textColor="?attr/colorOnSurface" android:textStyle="bold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="Isi durasi dalam detik sebelum otomatis lanjut ke chapter berikutnya. Kosong atau tidak valid akan memakai default 3 detik." android:textAppearance="?attr/textAppearanceBodySmall" android:textColor="?attr/colorOnSurfaceVariant" />
+                    <EditText
+                        android:id="@+id/mangaReaderNextChapterDurationInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/ui_search_background"
+                        android:hint="3"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textColorHint="?attr/colorOnSurfaceVariant" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/httpsSettingsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="14dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_doh_https"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+
+                    <TextView
+                        android:id="@+id/httpsSettingsTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:text="Pengaturan HTTPS / DoH"
+                        android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/httpsSettingsArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription=""
+                        android:src="@drawable/ic_settings_arrow_right"
+                        android:visibility="visible"
+                        app:tint="?attr/colorOnSurfaceVariant" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/httpsSettingsContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="?attr/colorOutlineVariant"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="DNS over HTTPS"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:textColor="?attr/colorOnSurface"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Pilih resolver DNS HTTPS untuk request source manga, anime, cover, dan gambar. Berguna saat DNS operator bermasalah atau memblokir domain source."
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+
+                        <RadioGroup
+                            android:id="@+id/dohProviderRadioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="vertical">
+
+                            <RadioButton android:id="@+id/dohDisabledRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nonaktif" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohCloudflareRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cloudflare" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohGoogleRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Google" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohAdGuardRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="AdGuard" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohQuad9Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Quad9" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohAliDnsRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="AliDNS" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohDnsPodRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="DNSPod" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/doh360Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="360" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohQuad101Radio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Quad 101" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohMullvadRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mullvad" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohControlDRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Control D" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohNjallaRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Njalla" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                            <RadioButton android:id="@+id/dohShecanRadio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Shecan" android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                        </RadioGroup>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/downloaderContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="?attr/colorSurfaceContainer"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Downloader"
+                        android:textAppearance="@style/TextAppearance.Miku.SectionTitle"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Hanya untuk Facebook dan TikTok"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <RadioGroup
+                        android:id="@+id/downloaderPlatformGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/downloaderFacebookRadio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Facebook"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+
+                        <RadioButton
+                            android:id="@+id/downloaderTiktokRadio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TikTok"
+                            android:textColor="?attr/colorOnSurface"  android:buttonTint="@color/miku_control_tint" android:fontFamily="sans-serif-medium"/>
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Miku.TextInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:hint="Link video atau foto"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusBottomEnd="18dp"
+                        app:boxCornerRadiusBottomStart="18dp"
+                        app:boxCornerRadiusTopEnd="18dp"
+                        app:boxCornerRadiusTopStart="18dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/downloaderInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textUri"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/downloaderFetchButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_marginTop="14dp"
+                        android:text="Download Video" />
+
+                    <ProgressBar
+                        android:id="@+id/downloaderProgress"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/downloaderStatusText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center"
+                        android:text="Download Video"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="?attr/colorOnSurfaceVariant" />
+
+                    <FrameLayout
+                        android:id="@+id/downloaderPreviewFrame"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/downloaderThumbnail"
+                            android:layout_width="220dp"
+                            android:layout_height="300dp"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/downloader_preview_background"
+                            android:clipToOutline="true"
+                            android:scaleType="centerCrop" />
+                    </FrameLayout>
+
+                    <androidx.media3.ui.PlayerView
+                        android:id="@+id/downloaderVideoPreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="420dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/downloader_preview_background"
+                        android:clipToOutline="true"
+                        android:visibility="gone"
+                        app:resize_mode="fit"
+                        app:show_buffering="when_playing"
+                        app:use_controller="true" />
+
+                    <HorizontalScrollView
+                        android:id="@+id/downloaderPhotoScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:clipToPadding="false"
+                        android:fillViewport="false"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/downloaderPhotoList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" />
+                    </HorizontalScrollView>
+
+                    <TextView
+                        android:id="@+id/downloaderTitleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/downloaderResultList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/developerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/wave_gradient"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone">
+
+            <ImageView android:layout_width="82dp" android:layout_height="82dp" android:scaleType="centerCrop" android:src="@drawable/developer_logo" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Developer @Miku01v" android:textAppearance="@style/TextAppearance.Miku.ScreenTitle" android:textColor="@android:color/white" android:textStyle="bold" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Aplikasi dibangun menggunakan Code On The Go, Gratis tanpa iklan dan tanpa fitur berbayar semua konten langsung di ambil dari sumbernya dan tidak diperjual belikan selamat menikmati,jika ada masalah pada aplikasi silahkan laporkan ke saya klik tombol Developer untuk melaporkan nya" android:textAppearance="?attr/textAppearanceBodyLarge" android:textColor="@android:color/white" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/channelButton" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="18dp" android:text="Miku X Mods" app:icon="@drawable/ic_telegram" app:iconGravity="textStart" />
+            <com.google.android.material.button.MaterialButton android:id="@+id/developerButton" style="@style/Widget.Miku.Button.Outlined" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginTop="8dp" android:text="Miku01v" android:textColor="@android:color/white" app:icon="@drawable/ic_developer" app:iconGravity="textStart" app:iconTint="@android:color/white" app:strokeColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

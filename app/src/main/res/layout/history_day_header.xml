@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dayHeaderTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fontFamily="sans-serif-medium"
+    android:includeFontPadding="false"
+    android:letterSpacing="0.04"
+    android:paddingStart="6dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="6dp"
+    android:paddingBottom="10dp"
+    android:text="Ditonton hari ini"
+    android:textColor="?attr/colorPrimary"
+    android:textSize="13sp"
+    android:textStyle="bold" />

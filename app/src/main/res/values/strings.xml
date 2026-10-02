@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Miku Moe</string>
+    <string name="anime_image">Gambar Anime</string>
+    <string name="error_parsing_data">Terjadi kesalahan dalam mem-parsing data</string>
+    <string name="error_network">Kesalahan jaringan: %1$s</string>
+</resources>

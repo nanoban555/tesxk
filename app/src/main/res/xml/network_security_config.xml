@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">pencarinafkah.xyz</domain>
+        <domain includeSubdomains="true">rambutan.whatbox.ca</domain>
+        <domain includeSubdomains="true">greip.whatbox.ca</domain>
+        <domain includeSubdomains="true">honeydew.whatbox.ca</domain>
+        <domain includeSubdomains="true">santol.whatbox.ca</domain>
+        <domain includeSubdomains="true">elara.whatbox.ca</domain>
+        <domain includeSubdomains="true">box.ca</domain>
+        <domain includeSubdomains="true">zencdn.net</domain>
+        <domain includeSubdomains="true">animeku.my.id</domain>
+        <domain includeSubdomains="true">wincamp.web.id</domain>
+        <domain includeSubdomains="true">51.79.159.208</domain>
+        <domain includeSubdomains="true">plesk.page</domain>
+        <domain includeSubdomains="true">blogspot.com</domain>
+        <domain includeSubdomains="true">googlevideo.com</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">fbcdn.net</domain>
+    </domain-config>
+</network-security-config>

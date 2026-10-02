@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="detail_loading_indicator_colors">
+        <item>@color/md_theme_primary</item>
+        <item>@color/md_theme_secondary</item>
+        <item>@color/md_theme_primaryContainer</item>
+    </array>
+</resources>
