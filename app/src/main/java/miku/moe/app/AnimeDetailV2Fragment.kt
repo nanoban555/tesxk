@@ -811,6 +811,8 @@ private fun loadAnichinDetailData(initial: AnimePost): AnimeDetailData {
     val result = Anichin.detail(slug)
     val post = result.post
     post.sourceId = AnimeSettingsManager.SOURCE_ANICHIN
+    if (post.imgUrl.isBlank()) post.imgUrl = initial.imgUrl.orEmpty()
+    if (post.categoryName.isBlank()) post.categoryName = initial.categoryName.orEmpty()
     val episodes = result.episodes.map { item ->
         AnimeEpisodeItem(item.id, item.title, item.subtitle, AnimeSettingsManager.SOURCE_ANICHIN, item.episodeId, item.episodeId)
     }

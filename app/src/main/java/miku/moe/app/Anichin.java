@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -99,6 +100,51 @@ public final class Anichin {
                 }
             })
             .build();
+
+    /**
+     * DNS-over-HTTPS (via Cloudflare 1.1.1.1) khusus untuk rumble.com.
+     * rumble.com di-DNS-block di sebagian ISP Indonesia (label situs: "Rumble [Setting DNS]"),
+     * sehingga resolve normal melempar UnknownHostException dan Rumble tak pernah terpakai.
+     */
+    private static final okhttp3.Dns RUMBLE_DNS = hostname -> {
+        if (!hostname.toLowerCase(Locale.ROOT).contains("rumble.com")) {
+            return okhttp3.Dns.SYSTEM.lookup(hostname);
+        }
+        try {
+            return dohLookup(hostname);
+        } catch (Exception e) {
+            return okhttp3.Dns.SYSTEM.lookup(hostname);
+        }
+    };
+
+    private static final OkHttpClient RUMBLE_CLIENT = new OkHttpClient.Builder()
+            .dns(RUMBLE_DNS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
+            .build();
+
+    private static java.util.List<java.net.InetAddress> dohLookup(String hostname) throws IOException {
+        String dohUrl = "https://1.1.1.1/dns-query?name=" + hostname + "&type=A";
+        Request req = new Request.Builder()
+                .url(dohUrl)
+                .header("Accept", "application/dns-json")
+                .header("User-Agent", UA)
+                .build();
+        try (Response resp = CLIENT.newCall(req).execute()) {
+            if (!resp.isSuccessful()) throw new IOException("DoH HTTP " + resp.code());
+            String body = resp.body() == null ? "" : resp.body().string();
+            java.util.List<java.net.InetAddress> out = new ArrayList<>();
+            Matcher m = Pattern.compile("\"data\"\\s*:\\s*\"([0-9]{1,3}(?:\\.[0-9]{1,3}){3})\"").matcher(body);
+            while (m.find()) {
+                try {
+                    out.add(java.net.InetAddress.getByName(m.group(1)));
+                } catch (Exception ignored) {}
+            }
+            if (out.isEmpty()) throw new IOException("DoH: no Answer");
+            return out;
+        }
+    }
 
     private Anichin() {}
 
@@ -197,9 +243,15 @@ public final class Anichin {
         String alter = textOf(doc.selectFirst("span.alter"));
         String poster = absUrl(attrOf(doc.selectFirst("div.thumb img"), "src"));
         if (!useful(poster)) poster = absUrl(attrOf(doc.selectFirst("div.thumb img"), "data-src"));
+        if (!useful(poster)) poster = absUrl(attrOf(doc.selectFirst("meta[property=og:image]"), "content"));
         String rating = textOf(doc.selectFirst(".infox .numscore"));
         if (!useful(rating)) rating = textOf(doc.selectFirst(".numscore"));
-        String description = textOf(doc.selectFirst("div.desc"));
+        // Sinopsis yang benar ada di div.bixbox.synp > div.entry-content.
+        // div.desc hanya berisi teks SEO spam ("Tonton streaming... download gratis...").
+        String description = textOf(doc.selectFirst("div.bixbox.synp div.entry-content"));
+        if (!useful(description)) description = textOf(doc.selectFirst("div.synp div.entry-content"));
+        if (!useful(description)) description = textOf(doc.selectFirst("div.desc.mindes"));
+        if (!useful(description)) description = textOf(doc.selectFirst("div.mindesc"));
 
         ArrayList<String> genres = new ArrayList<>();
         for (Element a : doc.select("div.genxed a")) {
@@ -251,6 +303,12 @@ public final class Anichin {
             String label = useful(title) ? title : "Movie";
             episodes.add(new EpisodeResult(positiveId(pageUrl), label, "", pageUrl, "", 1));
         }
+        if (episodes.isEmpty()) {
+            // Beberapa anime punya eplister KOSONG di halaman detail (data situs rusak),
+            // tapi halaman episode-nya ada dan punya daftar "Episode Lainnya".
+            // Coba temukan episode via pola URL lalu crawl "Episode Lainnya".
+            episodes = discoverEpisodes(slug);
+        }
         return new DetailResult(post, description, genres, rows, episodes);
     }
 
@@ -276,6 +334,77 @@ public final class Anichin {
         }
         result.sort((x, y) -> Integer.compare(x.episodeNumber, y.episodeNumber));
         return result;
+    }
+
+    /**
+     * Fallback bila eplister di halaman detail kosong: coba buka pola URL episode-01,
+     * lalu crawl bagian "Episode Lainnya" untuk menemukan episode lain.
+     */
+    private static ArrayList<EpisodeResult> discoverEpisodes(String slug) {
+        ArrayList<EpisodeResult> result = new ArrayList<>();
+        if (!useful(slug)) return result;
+        // Coba pola URL episode pertama (zero-padded dan tidak).
+        String firstEp = null;
+        for (String epUrl : new String[]{
+                BASE + "/" + slug + "-episode-01-subtitle-indonesia/",
+                BASE + "/" + slug + "-episode-1-subtitle-indonesia/"}) {
+            try {
+                Document d = Jsoup.parse(get(epUrl));
+                if (d.selectFirst("select.mirror") != null) {
+                    firstEp = epUrl;
+                    break;
+                }
+            } catch (Exception ignored) {}
+        }
+        if (firstEp == null) return result;
+        // BFS crawl "Episode Lainnya", dibatasi agar tidak berputar-putar.
+        Set<String> seen = new HashSet<>();
+        ArrayDeque<String> queue = new ArrayDeque<>();
+        seen.add(firstEp);
+        queue.add(firstEp);
+        Pattern numPattern = Pattern.compile("-episode-(\\d+)", Pattern.CASE_INSENSITIVE);
+        int pages = 0;
+        while (!queue.isEmpty() && pages < 50) {
+            String pageUrl = queue.poll();
+            pages++;
+            Document d;
+            try {
+                d = Jsoup.parse(get(pageUrl));
+            } catch (Exception ignored) {
+                continue;
+            }
+            // Daftarkan halaman ini sendiri sebagai episode bila polanya cocok.
+            Matcher self = numPattern.matcher(pageUrl);
+            if (self.find()) addDiscoveredEpisode(result, pageUrl, self.group(1));
+            // Cari tautan "Episode Lainnya".
+            for (Element box : d.select("div.bixbox")) {
+                Element h = box.selectFirst("h2, h3");
+                if (h == null || !h.text().toLowerCase(Locale.ROOT).contains("episode")) continue;
+                for (Element a : box.select("a[href]")) {
+                    String href = a.attr("href").trim();
+                    if (!useful(href)) continue;
+                    Matcher m = numPattern.matcher(href);
+                    if (!m.find()) continue;
+                    String abs = absUrl(href);
+                    addDiscoveredEpisode(result, abs, m.group(1));
+                    if (seen.add(abs)) queue.add(abs);
+                }
+            }
+        }
+        result.sort((x, y) -> Integer.compare(x.episodeNumber, y.episodeNumber));
+        return result;
+    }
+
+    private static void addDiscoveredEpisode(ArrayList<EpisodeResult> result, String pageUrl, String numStr) {
+        int num;
+        try {
+            num = Integer.parseInt(numStr.replaceFirst("^0+(?!$)", ""));
+        } catch (Exception ignored) {
+            return;
+        }
+        if (num <= 0) return;
+        for (EpisodeResult e : result) if (e.episodeNumber == num) return;
+        result.add(new EpisodeResult(positiveId(pageUrl), "Episode " + num, "", pageUrl, "", num));
     }
 
     // ------------------------------------------------------------------ playback
@@ -360,7 +489,17 @@ public final class Anichin {
         Matcher m = Pattern.compile("rumble\\.com/embed/([A-Za-z0-9]+)").matcher(mirror.src);
         if (!m.find()) return out;
         String id = m.group(1);
-        String body = get("https://rumble.com/embedJS/u3/?request=video&ver=2&v=" + id);
+        // Pakai RUMBLE_CLIENT (DoH) agar lolos DNS-block.
+        String body;
+        Request req = new Request.Builder()
+                .url("https://rumble.com/embedJS/u3/?request=video&ver=2&v=" + id)
+                .header("User-Agent", UA)
+                .header("Accept", "*/*")
+                .build();
+        try (Response resp = RUMBLE_CLIENT.newCall(req).execute()) {
+            if (!resp.isSuccessful()) return out;
+            body = resp.body() == null ? "" : resp.body().string();
+        }
         if (body == null || body.trim().equals("false")) return out; // video mati
         try {
             JSONObject json = new JSONObject(body);
@@ -433,7 +572,9 @@ public final class Anichin {
                 || containsAny(labelLow, "vidhide", "streamwish", "filemoon")) return resolveVidhide(src);
         if (low.contains("dailymotion.com")) return resolveDailymotion(src);
         if (low.contains("d.tube")) return resolveDtube(src);
-        if (labelLow.contains("dood")) return resolveDood(mirror);
+        // Doodstream DINONAKTIFKAN SEMENTARA: URL hasil resolveDood tidak dapat diputar
+        // (dilaporkan user), format final URL belum terverifikasi. Jangan asal tebak.
+        // if (labelLow.contains("dood")) return resolveDood(mirror);
         return new ArrayList<>();
     }
 
