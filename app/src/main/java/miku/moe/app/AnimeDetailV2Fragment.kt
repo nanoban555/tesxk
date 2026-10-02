@@ -319,19 +319,8 @@ private fun AnimeDetailV2Screen(initial: AnimePost?, historyVersion: Int, onBack
                         },
                         onStart = {
                             val episode = startEpisode
-                            if (episode == null) Toast.makeText(context, "Episode belum tersedia", Toast.LENGTH_SHORT).show() else scope.launch {
-                                playbackLoading = true
-                                try {
-                                    val options = withContext(Dispatchers.IO) { loadAnimePlaybackOptions(context, detail, episode) }
-                                    handlePlaybackOptions(context, detail, episode, options) { pendingPlayback = it }
-                                } catch (e: CancellationException) {
-                                    throw e
-                                } catch (e: Exception) {
-                                    Toast.makeText(context, "Gagal memuat opsi pemutaran", Toast.LENGTH_SHORT).show()
-                                } finally {
-                                    playbackLoading = false
-                                }
-                            }
+                            if (episode == null) Toast.makeText(context, "Episode belum tersedia", Toast.LENGTH_SHORT).show()
+                            else launchPlaybackWithCloudflare(scope, context, detail, episode, { pendingPlayback = it }, { playbackLoading = it })
                         }
                     )
                 }
@@ -369,19 +358,7 @@ private fun AnimeDetailV2Screen(initial: AnimePost?, historyVersion: Int, onBack
                             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                 rowEpisodes.forEach { episode ->
                                     AnimeEpisodeRowV2(episode, episodeHistory[episode.id], Modifier.weight(1f)) {
-                                        scope.launch {
-                                            playbackLoading = true
-                                            try {
-                                                val options = withContext(Dispatchers.IO) { loadAnimePlaybackOptions(context, detail, episode) }
-                                                handlePlaybackOptions(context, detail, episode, options) { pendingPlayback = it }
-                                            } catch (e: CancellationException) {
-                                                throw e
-                                            } catch (e: Exception) {
-                                                Toast.makeText(context, "Gagal memuat opsi pemutaran", Toast.LENGTH_SHORT).show()
-                                            } finally {
-                                                playbackLoading = false
-                                            }
-                                        }
+                                        launchPlaybackWithCloudflare(scope, context, detail, episode, { pendingPlayback = it }, { playbackLoading = it })
                                     }
                                 }
                                 repeat(2 - rowEpisodes.size) { Spacer(Modifier.weight(1f)) }
@@ -391,19 +368,7 @@ private fun AnimeDetailV2Screen(initial: AnimePost?, historyVersion: Int, onBack
                 } else {
                     items(shownEpisodes, key = { it.id.toString() + it.url }) { episode ->
                         AnimeEpisodeRowV2(episode, episodeHistory[episode.id], Modifier.padding(horizontal = 16.dp)) {
-                            scope.launch {
-                                playbackLoading = true
-                                try {
-                                    val options = withContext(Dispatchers.IO) { loadAnimePlaybackOptions(context, detail, episode) }
-                                    handlePlaybackOptions(context, detail, episode, options) { pendingPlayback = it }
-                                } catch (e: CancellationException) {
-                                    throw e
-                                } catch (e: Exception) {
-                                    Toast.makeText(context, "Gagal memuat opsi pemutaran", Toast.LENGTH_SHORT).show()
-                                } finally {
-                                    playbackLoading = false
-                                }
-                            }
+                            launchPlaybackWithCloudflare(scope, context, detail, episode, { pendingPlayback = it }, { playbackLoading = it })
                         }
                     }
                 }
@@ -1053,6 +1018,50 @@ private fun handlePlaybackOptions(context: Context, detail: AnimeDetailData, epi
     val selected = PlaybackQualityManager.getQuality(context)
     val option = options.firstOrNull { it.quality == selected }
     if (option != null) openAnimePlayback(context, detail, episode, option) else showDialog(episode to options)
+}
+
+/**
+ * Muat opsi playback dengan penanganan Cloudflare: bila server menantang,
+ * buka WebView resolver otomatis; setelah user menyelesaikan, ulangi pemutaran.
+ */
+private fun launchPlaybackWithCloudflare(
+    scope: kotlinx.coroutines.CoroutineScope,
+    context: Context,
+    detail: AnimeDetailData,
+    episode: AnimeEpisodeItem,
+    showDialog: (Pair<AnimeEpisodeItem, List<AnimeQualityOption>>) -> Unit,
+    setLoading: (Boolean) -> Unit
+) {
+    scope.launch {
+        setLoading(true)
+        try {
+            val options = withContext(Dispatchers.IO) { loadAnimePlaybackOptions(context, detail, episode) }
+            handlePlaybackOptions(context, detail, episode, options, showDialog)
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Anichin.CloudflareChallengeException) {
+            // Buka WebView untuk selesaikan tantangan Cloudflare (saran goshujin-sama).
+            Toast.makeText(context, "Verifikasi Cloudflare diperlukan, membuka browser...", Toast.LENGTH_LONG).show()
+            val listener = object : CloudflareHelper.SolvedListener {
+                override fun onCloudflareSolved(host: String, sourceLabel: String) {
+                    CloudflareHelper.removeSolvedListener(this)
+                    // Coba lagi setelah tantangan diselesaikan.
+                    launchPlaybackWithCloudflare(scope, context, detail, episode, showDialog, setLoading)
+                }
+            }
+            CloudflareHelper.addSolvedListener(listener)
+            try {
+                CloudflareHelper.openResolverForSource(context, AnimeSettingsManager.SOURCE_ANICHIN, "Anichin")
+            } catch (ex: Exception) {
+                CloudflareHelper.removeSolvedListener(listener)
+                Toast.makeText(context, "Gagal membuka verifikasi Cloudflare", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: Exception) {
+            Toast.makeText(context, "Gagal memuat opsi pemutaran", Toast.LENGTH_SHORT).show()
+        } finally {
+            setLoading(false)
+        }
+    }
 }
 
 private fun loadAnimePlaybackOptions(context: Context, detail: AnimeDetailData, episode: AnimeEpisodeItem): List<AnimeQualityOption> {

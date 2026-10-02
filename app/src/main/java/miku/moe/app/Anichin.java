@@ -63,42 +63,8 @@ public final class Anichin {
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
-            .cookieJar(new CookieJar() {
-                private final Map<String, List<Cookie>> store = new HashMap<>();
-
-                @Override
-                public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                    String host = url.host();
-                    List<Cookie> existing = store.get(host);
-                    if (existing == null) {
-                        existing = new ArrayList<>();
-                        store.put(host, existing);
-                    }
-                    for (Cookie cookie : cookies) {
-                        boolean replaced = false;
-                        for (int i = 0; i < existing.size(); i++) {
-                            if (existing.get(i).name().equals(cookie.name())) {
-                                existing.set(i, cookie);
-                                replaced = true;
-                                break;
-                            }
-                        }
-                        if (!replaced) existing.add(cookie);
-                    }
-                }
-
-                @Override
-                public List<Cookie> loadForRequest(HttpUrl url) {
-                    List<Cookie> result = new ArrayList<>();
-                    String host = url.host();
-                    for (Map.Entry<String, List<Cookie>> entry : store.entrySet()) {
-                        if (host.equals(entry.getKey()) || host.endsWith("." + entry.getKey())) {
-                            result.addAll(entry.getValue());
-                        }
-                    }
-                    return result;
-                }
-            })
+            // Pakai shared cookie jar agar cookie hasil solve Cloudflare via WebView ikut terpakai.
+            .cookieJar(CloudflareHelper.cookieJar())
             .build();
 
     /**
@@ -144,6 +110,24 @@ public final class Anichin {
             if (out.isEmpty()) throw new IOException("DoH: no Answer");
             return out;
         }
+    }
+
+    /** Dilempar bila server menjawab dengan tantangan Cloudflare. UI harus membuka WebView resolver. */
+    public static class CloudflareChallengeException extends IOException {
+        public final String url;
+        public CloudflareChallengeException(String url) {
+            super("Cloudflare challenge: " + url);
+            this.url = url;
+        }
+    }
+
+    private static boolean isCloudflareChallenge(int code, String body) {
+        if (code == 403 || code == 503) {
+            String b = body == null ? "" : body.toLowerCase(java.util.Locale.ROOT);
+            return b.contains("just a moment") || b.contains("cf_chl") || b.contains("challenge-platform")
+                    || b.contains("cf_clearance") || b.contains("cloudflare");
+        }
+        return false;
     }
 
     private Anichin() {}
@@ -423,6 +407,8 @@ public final class Anichin {
         Document doc;
         try {
             doc = Jsoup.parse(get(pageUrl));
+        } catch (CloudflareChallengeException e) {
+            throw e; // teruskan ke UI agar buka WebView resolver
         } catch (IOException e) {
             return result;
         }
@@ -755,8 +741,12 @@ public final class Anichin {
         if (useful(referer)) hb.add("Referer", referer);
         Request request = new Request.Builder().url(url).headers(hb.build()).build();
         try (Response response = CLIENT.newCall(request).execute()) {
+            String body = response.body() == null ? "" : response.body().string();
+            if (isCloudflareChallenge(response.code(), body)) {
+                throw new CloudflareChallengeException(url);
+            }
             if (!response.isSuccessful()) throw new IOException("HTTP " + response.code());
-            return response.body() == null ? "" : response.body().string();
+            return body;
         }
     }
 

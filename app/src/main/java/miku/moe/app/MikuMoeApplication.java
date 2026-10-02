@@ -52,6 +52,20 @@ public class MikuMoeApplication extends Application implements ImageLoaderFactor
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
+                .addInterceptor(chain -> {
+                    okhttp3.Request req = chain.request();
+                    okhttp3.Request.Builder b = req.newBuilder();
+                    // Beberapa host (termasuk anichin.moe) memblokir request gambar tanpa User-Agent.
+                    if (req.header("User-Agent") == null) {
+                        b.header("User-Agent", CloudflareHelper.browserUserAgent());
+                    }
+                    // Anti hotlink-protection: kirim Referer utk host yg dikenal.
+                    String host = req.url().host();
+                    if (req.header("Referer") == null && host != null && host.contains("anichin.moe")) {
+                        b.header("Referer", "https://anichin.moe/");
+                    }
+                    return chain.proceed(b.build());
+                })
                 .build();
         return new ImageLoader.Builder(this)
                 .okHttpClient(client)
