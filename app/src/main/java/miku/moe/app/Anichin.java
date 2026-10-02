@@ -353,12 +353,14 @@ public final class Anichin {
         String id = m.group(1);
         String body = get("https://rumble.com/embedJS/u3/?request=video&ver=2&v=" + id);
         if (body == null || body.trim().equals("false")) return out; // video mati
-        JSONObject json = new JSONObject(body);
-        // HLS master adaptif (utama untuk ExoPlayer)
-        addUrl(out, PlaybackQualityManager.QUALITY_FHD, "Rumble HLS Auto", jsonPath(json, "ua", "hls", "auto", "url"));
-        addUrl(out, PlaybackQualityManager.QUALITY_FHD, "Rumble HLS Auto", jsonPath(json, "u", "hls", "url"));
-        // MP4 langsung per resolusi (jika ada)
-        scanMp4(json, "", out);
+        try {
+            JSONObject json = new JSONObject(body);
+            // HLS master adaptif (utama untuk ExoPlayer)
+            addUrl(out, PlaybackQualityManager.QUALITY_FHD, "Rumble HLS Auto", jsonPath(json, "ua", "hls", "auto", "url"));
+            addUrl(out, PlaybackQualityManager.QUALITY_FHD, "Rumble HLS Auto", jsonPath(json, "u", "hls", "url"));
+            // MP4 langsung per resolusi (jika ada)
+            scanMp4(json, "", out);
+        } catch (Exception ignored) {}
         return out;
     }
 
