@@ -126,6 +126,8 @@ public final class AnimeFavoriteEpisodeResolver {
         if (!best.isEmpty()) return best;
         return detail == null || detail.post == null ? AnimeEpisodeLabelUtils.latestLabel(post) : AnimeEpisodeLabelUtils.latestLabel(detail.post);
     }
+
+    private static String bestEpisodeFromArray(JSONArray array) {
         if (array == null) return "";
         String best = "";
         for (int i = 0; i < array.length(); i++) {
