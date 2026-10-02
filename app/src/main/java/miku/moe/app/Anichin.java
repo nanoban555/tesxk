@@ -111,7 +111,9 @@ public final class Anichin {
     public static PageResult listing(String order, int page) throws IOException {
         String o = order == null ? "" : order.trim().toLowerCase(Locale.ROOT);
         if (!ORDERS.contains(o)) o = "update";
-        String url = page <= 1 ? BASE + "/?order=" + o : BASE + "/page/" + page + "/?order=" + o;
+        // PENTING: ?order= hanya dihormati di halaman /anime/ (form filter action="/anime").
+        // Homepage (/) mengabaikan parameter order -> semua tab tampil sama.
+        String url = page <= 1 ? BASE + "/anime/?order=" + o : BASE + "/anime/?page=" + page + "&order=" + o;
         Document doc = Jsoup.parse(get(url));
         ArrayList<AnimePost> items = parseCards(doc);
         return new PageResult(items, hasNextListing(doc), items.size());
@@ -242,6 +244,13 @@ public final class Anichin {
         post.episodeCount = episodeCountRaw;
 
         ArrayList<EpisodeResult> episodes = parseEpisodes(doc);
+        if (episodes.isEmpty() && doc.selectFirst("select.mirror") != null) {
+            // Halaman movie: tidak ada daftar episode, tapi video player (select.mirror)
+            // langsung ada di halaman detail. Buat satu entri agar bisa diputar.
+            String pageUrl = BASE + "/" + slug + "/";
+            String label = useful(title) ? title : "Movie";
+            episodes.add(new EpisodeResult(positiveId(pageUrl), label, "", pageUrl, "", 1));
+        }
         return new DetailResult(post, description, genres, rows, episodes);
     }
 
@@ -417,10 +426,14 @@ public final class Anichin {
         }
 
         if (low.contains("ok.ru")) return resolveOkru(src);
-        if (containsAny(low, "vidhide", "streamwish", "filemoon", "strwish", "wishfast", "streamhide", "vidmoly", "vidhidepro", "vidhideplus")) return resolveVidhide(src);
+        // VidHide-family: cek URL dan LABEL (domain custom spt morencius.com/callistanise.com
+        // tidak mengandung kata "vidhide" di URL, tapi labelnya "VidHide [ADS]").
+        String labelLow = mirror.label.toLowerCase(Locale.ROOT);
+        if (containsAny(low, "vidhide", "streamwish", "filemoon", "strwish", "wishfast", "streamhide", "vidmoly", "vidhidepro", "vidhideplus", "morencius", "callistanise")
+                || containsAny(labelLow, "vidhide", "streamwish", "filemoon")) return resolveVidhide(src);
         if (low.contains("dailymotion.com")) return resolveDailymotion(src);
         if (low.contains("d.tube")) return resolveDtube(src);
-        if (mirror.label.toLowerCase(Locale.ROOT).contains("dood")) return resolveDood(mirror);
+        if (labelLow.contains("dood")) return resolveDood(mirror);
         return new ArrayList<>();
     }
 
